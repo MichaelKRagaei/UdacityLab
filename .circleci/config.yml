@@ -11,11 +11,18 @@ jobs:
     docker: 
       - image: circleci/node:13.8.0
     steps:
-      - run: return 1
-      - run: 
-          name: on Error
-          command: echo "Hello Errors!"
-          when: on_fail
+      - run: apk add --update curl
+      - run:
+          name: smoke test
+          command: |
+            URL="https://blog.udacity.com/"
+            # Test if website exists
+            if curl -s --head ${URL} 
+            then
+              return 0
+            else
+              return 1
+            fi
 
 workflows:
   ErrorTest:
