@@ -4,7 +4,7 @@ version: 2.1
 jobs:
   smoke_test:
   docker:
-    - image: alpine:latest
+    - image: circleci/node:13.8.0
   steps:
     - run: apk add --update curl
     - run:
