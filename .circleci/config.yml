@@ -9,7 +9,7 @@ version: 2.1
 jobs:
   PrintError:
     docker: 
-      - image: circleci/node:13.8.0
+      - image: alpine:latest
     steps:
       - run: apk add --update curl
       - run:
